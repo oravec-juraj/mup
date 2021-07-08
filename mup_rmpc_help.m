@@ -14,6 +14,7 @@
 %
 %   est.:2013.07.17.
 %   rev.:2015.06.17.
+%   rev.:2021.07.02.
 %
 
 % Copyright is with the following author(s):
@@ -46,7 +47,7 @@ function chk = mup_rmpc_help()
 
 try
     %% Open MUP-homepage in Broser
-    chk = web('https://bitbucket.org/oravec/mup/wiki/Home', '-browser');
+    chk = web('https://github.com/oravec-juraj/mup/wiki', '-browser');
 catch
     %% Write MUP_HELP into MATLAB COMMAND-WINDOW
     [fid,m] = fopen('README.md','r');

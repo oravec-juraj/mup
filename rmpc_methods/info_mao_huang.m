@@ -45,6 +45,6 @@ data.ver = '20150216';
 data.bib = ['@article{mao, author = {J. W. Mao}, title = {{Robust Stabilization of Uncertain Time-Varying Discrete Systems and Comments on ``An Improved Approach for Constrained Robust Model Predictive Control''''}}, journal = {Automatica}, year = {2003}, volume = {39}, pages = {1109-1112}, }'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

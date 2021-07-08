@@ -54,6 +54,10 @@ for j = 1 : nj
     Et{j,1} = diag(u_var(:,j));
 end % for j
 
+if(isempty(beta) == 1)
+    error(' MUP:BLOCK:RMPC: NSO AND WACIS: Parameter BETA was not defined!')
+end
+
 % Objective
 %
 obj = g + beta*gs + trace(X);
@@ -64,7 +68,7 @@ constr = [];
 
 % Auxiliary Weighted Bound
 %
-gs_bound = [g - gs >= ZERO];
+gs_bound = [g >= ZERO, gs >= ZERO, g - gs >= ZERO];
 
 % Lyapunov Matrix
 %

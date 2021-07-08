@@ -45,6 +45,6 @@ data.ver = '20140823';
 data.bib = ['@article{kothare, author = {M. V. Kothare and V. Balakrishnan and M. Morari}, title = {{Robust Constrained Model Predictive Control Using Linear Matrix Inequalities}}, journal = {Automatica}, year = {1996}, volume = {32}, pages = {1361-1379},}'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

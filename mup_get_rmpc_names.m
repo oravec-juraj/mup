@@ -47,6 +47,7 @@ end % for mupvar_k % mupvar_k - is MUP variable "k", i.e., temporary counter
 % about_ding = info_ding;
 % about_li = info_li;
 % about_huang = info_huang;
+% about_shi = info_shi;
 % about_zhang = info_zhang;
 % about_wan_cao = info_wan_cao;
 % about_wan_huang = info_wan_huang;

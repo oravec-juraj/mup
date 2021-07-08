@@ -49,12 +49,12 @@ A{3,1} = [0.50, 0.39; 1.10, 0.85];
 B{3,1} = [-1.45; -0.70];
 C{3,1} = [1, 0; 0, 1];
 % Sampling Time
-ts = 1;
+Ts = 1;
 %
 model.A = A;
 model.B = B;
 model.C = C;
-model.ts = ts;
+model.Ts = Ts;
 % System Initial Conditions
 x0 = [3;0];
 % Steady-State Values
@@ -75,7 +75,7 @@ nx = size(A{1},2);
 nu = size(B{1},2);
 
 %% Simulation of RMPC
-mup_rmpc_scheme = 'mup_rmpcblock_demo_model';
+mup_rmpc_scheme = mup_rmpcblock_demo_scheme;
 open_system(mup_rmpc_scheme)
 for vtx = 1 : nv
     sim(mup_rmpc_scheme);

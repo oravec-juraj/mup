@@ -58,7 +58,7 @@ constr = [];
 
 % Lyapunov Matrix
 %
-lmi_lyap = [];
+lmi_lyap = [g >= 0];
 for v = 1 : nv
     lmi_lyap_item = [Q{v} >= ZERO];
     lmi_lyap = lmi_lyap + lmi_lyap_item;

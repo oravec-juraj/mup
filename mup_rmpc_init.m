@@ -9,6 +9,7 @@
 %   rev.:2014.09.05.
 %   rev.:2014.09.08.
 %   rev.:2016.03.05.
+%   rev.:2021.07.02.
 
 % Copyright is with the following author(s):
 %
@@ -417,6 +418,9 @@ elseif(isequal(rmpc_method,about_huang.name))
 mup_verbose(1,vbs,' MUP:BLOCK:RMPC: Robust MPC design by %s',rmpc_method)
 
 beta = design.param; % Weighting Parameter BETA
+if(isempty(beta) == 1)
+    error(' MUP:BLOCK:RMPC: HUANG ET AL. (2011): Parameter BETA was not defined! Use PARAM to define it.')
+end
 
 if(isequal(opt_type,'reformulation'))
     %
@@ -442,8 +446,49 @@ F_opt = Y_opt*inv(X_opt);
 
 % END HUANG ET AL. (2011)
 
-elseif(isequal(rmpc_method,about_zhang.name))
+%
+elseif(isequal(rmpc_method,about_shi.name))
 %%
+% --------------------------------------------------- %
+%
+% RMPC - SHI ET AL. (2013)
+%
+% --------------------------------------------------- %
+%
+mup_verbose(1,vbs,' MUP:BLOCK:RMPC: Robust MPC design by %s',rmpc_method)
+
+if(isempty(design.param) == 1)
+    error(' MUP:BLOCK:RMPC: SHI ET AL. (2013): Prediction horizon N was not defined! Use PARAM to define it.')
+end
+    
+N = design.param; % Prediction horizon N 
+
+if(isequal(opt_type,'reformulation'))
+    %
+    % Reformulation
+    %
+    refo_shi
+    mup_verbose(2,vbs,' MUP:BLOCK:RMPC: SDP problem solved (YALMIP: %s).',sol.info)
+    %
+elseif(isequal(opt_type,'initial'))
+    %
+    % Optimizer
+    %
+    sdp_shi
+    design_rmpc_optimizer
+    init_shi
+    mup_verbose(2,vbs,' MUP:BLOCK:RMPC: SDP problem solved and OPTIMIZER designed.')
+    %
+else
+    error('MUP:BLOCK:RMPC: FATAL ERROR! Unable to design Robust MPC! (variable OPT_TYPE has unexpected value)')
+end % if
+
+F_opt = Y_opt*inv(X_opt);
+
+% END SHI ET AL. (2013)
+%
+%%
+elseif(isequal(rmpc_method,about_zhang.name))
 % --------------------------------------------------- %
 %
 % RMPC - ZHANG ET AL. (2013)
@@ -523,6 +568,9 @@ elseif(isequal(rmpc_method,about_wan_huang.name))
 mup_verbose(1,vbs,' MUP:BLOCK:RMPC: Robust MPC design by %s',rmpc_method)
 
 beta = design.param; % Weighting Parameter BETA
+if(isempty(beta) == 1)
+    error(' MUP:BLOCK:RMPC: NSO AND WACIS: Parameter BETA was not defined! Use PARAM to define it.')
+end
 
 if(isequal(opt_type,'reformulation'))
     %
@@ -595,6 +643,9 @@ elseif(isequal(rmpc_method,about_mao_huang.name))
 mup_verbose(1,vbs,' MUP:BLOCK:RMPC: Robust MPC design by %s',rmpc_method)
 
 beta = design.param; % Weighting Parameter BETA
+if(isempty(beta) == 1)
+    error(' MUP:BLOCK:RMPC: PDLF AND WACIS: Parameter BETA was not defined! Use PARAM to define it.')
+end
 
 if(isequal(opt_type,'reformulation'))
     %

@@ -13,6 +13,7 @@
 %   juraj.oravec@stuba.sk
 %
 %   est.:2015.06.16
+%   rev.:2021.07.08
 %
 
 % Copyright is with the following author(s):
@@ -47,7 +48,7 @@ function [rmpc_method,rmpc_kwd] = mup_cli_rmpc_method()
 [rmpc_list, rmpc_kwds] = mup_get_rmpclist();
 %
 %% Verbose
-disp(sprintf('\n List of avaliable methods:'))
+disp(sprintf('\n List of available methods:'))
 for k = 1 : length(rmpc_list)
     disp(sprintf(' %2d: %s',k,rmpc_list{k}))
 end % for k

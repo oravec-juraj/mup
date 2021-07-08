@@ -72,15 +72,14 @@ constr = [];
 
 % Saturation-Dependent Lyapunov Matrix W
 %
-lmi_lyap = [];
+lmi_lyap = [g >= ZERO];
 for j = 1 : nj
     lmi_lyap_item = [W{j} >= ZERO];
     lmi_lyap = lmi_lyap + lmi_lyap_item;
 end % for v
-
+%
 % Saturation-Dependent Lyapunov Matrix Q
 %
-lmi_lyap = [];
 for j = 1 : nj
     lmi_lyap_item = [Q{j} >= ZERO];
     lmi_lyap = lmi_lyap + lmi_lyap_item;

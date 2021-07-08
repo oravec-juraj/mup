@@ -1,14 +1,4 @@
-% INFO_WAN_HUANG
-%
-%   Function INFO_WAN_HUANG returnes basic information about RMPC_CAO
-%
-%   data = info_wan_huang
-%
-%   data:struct - is output structure with basic information
-%
-%   juraj.oravec@stuba.sk
-%
-%   est. 2014.09.26.
+% REFO_MAO_HUANG
 %
 
 % Copyright is with the following author(s):
@@ -37,14 +27,25 @@
 %
 % ------------------------------------------------------------------------------
 
-function data = info_wan_huang()
-
-data.name = 'NSO and WACIS';
-data.keyword = 'wan_huang';
-data.ver = '20140908';
-data.bib = ['@article{wan, author = {Z. Wan and M. V. Kothare}, title = {{Efficient Robust Constrained Model Predictive Control with a Time Varying Terminal Constraint Set}}, journal = {Automatica}, year = {2003}, volume = {48}, pages = {375-383}, }, @article{huang, author = {H. Huang and D. Li and Z. Lin and Y. Xi}, title = {{An Improved Robust Model Predictive Control Design in the Presence of Actuator Saturation}}, journal = {Automatica}, year = {2011}, volume = {47}, pages = {861-864}, }'];
-data.author = 'Juraj Oravec';
-data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
-
-end % function
+sdp_shi
+sol = optimize(constr + [xk == xkk],obj,rmpc_block_ws.setup.op);
+X_opt = value(X{1});
+Y_opt = value(Y{1});
+if(isequal(setup.chk_feas,'on'))
+    for k = 1 : N
+        Xk_opt{k} = value(X{k});
+        Yk_opt{k} = value(Y{k});
+        Zk_opt{k} = value(Z{k});
+        g_opt = value(g);
+    end % for k
+    %
+    if(isempty(design.u_max) == 0)
+        U_opt = value(U);
+    end % if
+    %
+    for k = 1 : N+1
+        for v = 1 : nv
+            Qk_opt{k}{v} = value(Q{k}{v});
+        end % for v
+    end % for k
+end % if

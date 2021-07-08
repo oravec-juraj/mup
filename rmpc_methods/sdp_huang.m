@@ -52,6 +52,10 @@ for j = 1 : nj
     Et{j,1} = diag(u_var(:,j));
 end % for j
 
+if(isempty(beta) == 1)
+    error(' MUP:BLOCK:RMPC: HUANG ET AL. (2011): Parameter BETA was not defined!')
+end
+
 % Objective
 %
 obj = g + beta*gs + trace(X);
@@ -62,7 +66,7 @@ constr = [];
 
 % Auxiliary Weighted Bound
 %
-gs_bound = [g - gs >= ZERO];
+gs_bound = [g >= 0, gs >= 0, g - gs >= ZERO];
 
 % Lyapunov Matrix
 %

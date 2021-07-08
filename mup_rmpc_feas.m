@@ -191,6 +191,30 @@ rmpc_block_ws.results = results;
 %
 [chkf,chk_eig] = feas_huang(design,model,results,setup);
 %
+elseif(isequal(design.rmpc_method,about_shi.name))
+%
+%% Shi et al. (2013)
+%
+% Store Structure RESULTS
+%
+results.x = x; % xk
+results.X = X_opt;
+results.Y = Y_opt;
+results.g = g_opt;
+results.Xk = Xk_opt;
+results.Yk = Yk_opt;
+results.Qk = Qk_opt;
+results.Zk = Zk_opt;
+
+if(isempty(design.u_max) == 0)
+	results.U = U_opt;
+end % if
+
+rmpc_block_ws.results = results;
+%
+[chkf,chk_eig] = feas_shi(design,model,results,setup);
+%
+%
 elseif(isequal(design.rmpc_method,about_zhang.name))
 %
 %% Zhang et al. (2013)

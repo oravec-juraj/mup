@@ -45,6 +45,6 @@ data.ver = '20140823';
 data.bib = ['@article{cuzzola, author = {F. A. Cuzzola and J. C. Geromel and M. Morari}, title = {{An Improved Approach for Constrained Robust Model Predictive Control}}, journal = {Automatica}, year = {2002}, volume = {38}, pages = {1183-1189},}'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

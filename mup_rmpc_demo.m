@@ -93,8 +93,11 @@ chk_feas = 'on'; % Enable Feasibility Chcek
 [rmpc_method,rmpc_kwd] = mup_cli_rmpc_method;
 
 %% Additional RMPC Tunning Parameter
-if( (isequal(rmpc_method,'Huang et al. (2011)')) | (isequal(rmpc_method,'Wan et Huang ((2015))')) | (isequal(rmpc_method,'Mao et Huang (2015)')) )
+if( (isequal(rmpc_method,'Huang et al. (2011)')) | (isequal(rmpc_method,'PDLF and ACIS')) | (isequal(rmpc_method,'PDLF and WACIS')) )
     beta=1e3;
+elseif ( (isequal(rmpc_method,'Shi et al. (2013)')) )
+    N = 3; % Predictin horizon
+    param = N;
 end % if
 
 

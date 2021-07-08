@@ -45,6 +45,6 @@ data.ver = '20160305';
 data.bib = ['@article{soft_con, author = {Juraj Oravec and Monika Bako\v{s}ov\''{a}}, title = {{Soft Constraints in the Robust MPC Design via LMIs}}, booktitle = {Proceedings of the American Control Conference 2016}, year = {2016}, address = {Boston, USA},}'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

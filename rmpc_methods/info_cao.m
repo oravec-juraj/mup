@@ -45,6 +45,6 @@ data.ver = '20140823';
 data.bib = ['@article{cao, author = {Y. Y. Cao and Z. Lin}, title =  {{Min-max MPC algorithm for LPV systems subject to input saturation}}, journal = {Control Theory and Applications, IEE Proceedings}, year = {2005}, volume = {153}, pages = {266-272},}'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

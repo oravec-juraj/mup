@@ -38,9 +38,6 @@ global rmpc_block_ws
 
 % Some Preset Parameters
 %
-if(exist('rmpc_method') == 0)
-    rmpc_method = '';
-end % if
 if(exist('rmpc_kwd') == 0)
     rmpc_kwd = '';
 end % if
@@ -66,8 +63,7 @@ if(exist('vbsy') == 0)
     vbsy = 1;
 end % if
 if(exist('solver') == 0)
-    % solver = ''; % XXX
-    solver = 'sedumi';
+    solver = '';
 end % if
 if(exist('chk_feas') == 0)
     chk_feas = 'on';

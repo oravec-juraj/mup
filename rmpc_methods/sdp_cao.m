@@ -62,7 +62,7 @@ constr = [];
 
 % Lyapunov Matrix
 %
-lmi_lyap = [X >= ZERO];
+lmi_lyap = [g >= 0, X >= ZERO];
 
 % Robust Invariant Ellipsoid
 %

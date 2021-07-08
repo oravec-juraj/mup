@@ -10,6 +10,7 @@
 %   rev.:2014.09.30.
 %   rev.:2014.12.15.
 %   rev.:2016.03.05.
+%   rev.:2021.07.02.
 
 % Copyright is with the following author(s):
 %
@@ -315,6 +316,37 @@ elseif(isequal(design.rmpc_method,about_huang.name))
     F_opt = Y_opt*inv(X_opt);
 
 % END - HUANG ET AL. (2011)
+
+%% 
+% --------------------------------------------------- %
+%
+% RMPC - SHI ET AL. (2013)
+%
+% --------------------------------------------------- %
+% 
+% OPT_TYPE - REFORMULATION
+%
+elseif(isequal(design.rmpc_method,about_shi.name))
+    
+    N = design.param; % Prediction horizon N
+    %
+    if(isequal(design.opt_type,'reformulation'))
+        %
+        refo_shi
+        
+    elseif(isequal(design.opt_type,'initial'))
+    %
+    % OPT_TYPE - INITIAL = OPTIMIZER
+    %
+        init_shi
+    end % if
+
+    % Design RMPC gain matrix F
+    %
+    F_opt = Y_opt*inv(X_opt);
+
+% END - SHI ET AL. (2013)
+
 
 %%
 % --------------------------------------------------- %

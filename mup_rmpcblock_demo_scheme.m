@@ -44,11 +44,15 @@
 
 function mup_rmpc_scheme = mup_rmpcblock_demo_scheme()
 
-Mv = version; Mr = Mv(end-3:end-1);
-if(str2num(Mr(1:2)) <= 11)
-    mup_rmpc_scheme = 'mup_rmpcblock_demo_model_r2011b';
-elseif( (str2num(Mr(1:2)) >= 12) & (str2num(Mr(1:2)) <= 13) )
-    mup_rmpc_scheme = 'mup_rmpcblock_demo_model_r2012a';
+matlab_version = ver('MATLAB'); 
+matlab_release = matlab_version.Release;
+matlab_release_year = str2num(matlab_release(end-5:end-2));
+if( matlab_release_year < 2014 )
+    error(' ERROR: MUP_RMPC_BLOCK: Compatibility check failed! Simulink block requires MATLAB R2014a or newer!')
+elseif( matlab_release_year < 2020 )
+    mup_rmpc_scheme = 'mup_rmpcblock_demo_model_r2014a';
+elseif( ( matlab_release_year >= 2020 ) & ( matlab_release_year <= 2020 ) )
+    mup_rmpc_scheme = 'mup_rmpcblock_demo_model_r2019b';
 else
     mup_rmpc_scheme = 'mup_rmpcblock_demo_model';
 end % if MATLAB-version

@@ -22,6 +22,7 @@
 %   juraj.oravec@stuba.sk
 %
 %   est.:2015.06.17
+%   est.:2021.07.08
 
 % Copyright is with the following author(s):
 %
@@ -61,15 +62,16 @@ chk = -1;
 chk_yalmip = 0;
 chk_sdpsolver = 0;
 
-%% MUP Check
-if(exist('sdp_kothare') == 2)
-    stat{2,1} = 'RMPC methods available.';
+%% Check list of RMPC Methods 
+[rmpc_list, rmpc_kwds] = mup_get_rmpclist();
+if( isempty( rmpc_list ) == 0 )
+    stat{2,1} = 'RMPC design methods are available.';
     chk_mup = 1;
 else
-    stat{2,1} = 'RMPC methods not available!';
+	stat{2,1} = 'RMPC design methods are unavailable!';
     chk_mup = 0;
 end % if
-
+%
 %% YALMIP Check
 if(exist('yalmiptest') ~= 2)
     stat{3,1} = 'YALMIP not found!';
@@ -113,6 +115,10 @@ if(exist('penlmi') ~= 0)
     stat{4,1} = [stat{4}, 'PENLMI,'];
     chk_sdpsolver = 1;
 end
+if(exist('scs') ~= 0)
+    stat{4,1} = [stat{4}, 'SCS,'];
+    chk_sdpsolver = 1;
+end
 if(exist('sdpam') ~= 0)
     stat{4,1} = [stat{4}, 'SDPA,'];
     chk_sdpsolver = 1;
@@ -140,10 +146,10 @@ stat{4,1} = [stat{4}(1:end-1),'.'];
 
 %% Soft-Constraints Module
 if(exist('feas_init_soft_con') == 2)
-    stat{5,1} = 'SOFT-CON module available.';
+    stat{5,1} = 'SOFT-CON module is available.';
     chk_mup = 1;
 else
-    stat{5,1} = 'SOFT-CON module not available!';
+    stat{5,1} = 'SOFT-CON module is not available!';
     chk_mup = 0;
 end % if
 
@@ -159,6 +165,10 @@ end % if
 %% Report
 mup_verbose(1,vbs,' MUPTEST finished.');
 mup_verbose(1,vbs,' %s',stat{2});
+disp(sprintf(' List of available methods:'))
+for k = 1 : length(rmpc_list)
+    mup_verbose(1,vbs,'  %2d: %s',k,rmpc_list{k});
+end % for k
 mup_verbose(1,vbs,' %s',stat{3});
 mup_verbose(1,vbs,' %s',stat{4});
 mup_verbose(1,vbs,' %s',stat{5});

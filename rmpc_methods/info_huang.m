@@ -45,6 +45,6 @@ data.ver = '20140823';
 data.bib = ['@article{huang, author = {H. Huang and D. Li and Z. Lin and Y. Xi}, title = {{An improved robust model predictive control design in the presence of actuator saturation}}, journal = {Automatica}, year = {2011}, volume = {47}, pages = {861-864},}'];
 data.author = 'Juraj Oravec';
 data.ead = 'juraj.oravec@stuba.sk';
-data.homepage = 'https://bitbucket.org/oravec/mup/wiki/Home';
+data.homepage = 'https://github.com/oravec-juraj/mup/wiki';
 
 end % function

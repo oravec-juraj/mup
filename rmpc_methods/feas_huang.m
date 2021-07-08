@@ -116,12 +116,12 @@ entity = min(eig([...
     ZEROux,...
     gs*Iu...
     ]));
-mup_verbose(2,vbs,' FEAS_CHK: VTX:%d: Stability condition matrix MIN_EIG = %x.',v,j,entity)
+mup_verbose(2,vbs,' FEAS_CHK: VTX:%d|I:%d: Stability condition matrix MIN_EIG = %x.',v,j,entity)
 if(entity < ZERO);
    cnt = cnt + 1;
    chk(cnt) = 1;
    chk_eig(cnt) = entity;
-   mup_verbose(1,vbs,' FEAS_CHK: VTX:%d: Stability condition violated!',v,j)
+   mup_verbose(1,vbs,' FEAS_CHK: VTX:%d|I:%d: Stability condition violated!',v,j)
 end % if
 end % for v : nv
 
